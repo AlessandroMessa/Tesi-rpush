@@ -1,0 +1,57 @@
+server:
+  port: 8121
+  compression:
+    enabled: true
+    mime-types: application/javascript,text/css,application/json,application/xml,text/html,text/xml,text/plain
+
+auth:
+  super-admin:
+    username: ${super-admin.username:superadmin} # 超級管理用户名
+    password: ${super-admin.password:superadmin} # 超級管理密码
+  jwtSigningKey: ${jwtSigningKey:123456}
+
+spring:
+  application:
+    name: rpush-route
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: ${jdbc.url:jdbc:mysql://localhost:3306/rpush?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8}
+    username: ${jdbc.username:root}
+    password: ${jdbc.password:123456}
+    type: com.alibaba.druid.pool.DruidDataSource
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    auto-mapping-behavior: full
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath*:mapper/**/*Mapper.xml
+  global-config:
+    #机器 ID 部分(影响雪花ID)
+    workerId: 1
+    #数据标识 ID 部分(影响雪花ID)(workerId 和 datacenterId 一起配置才能重新初始化 Sequence)
+    datacenterId: 1
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka-service-ip:localhost}:${eureka-sevice-port:8761}/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+rpush-server:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.regent.rpush.route.loadbalancer.ServerBalancer
+
+sdk:
+  directory: ${target.java.sdk.directory}
