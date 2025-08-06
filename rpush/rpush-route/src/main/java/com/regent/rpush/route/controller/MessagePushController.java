@@ -16,7 +16,7 @@ import com.regent.rpush.route.handler.MessageHandler;
 import com.regent.rpush.route.model.RpushMessageHis;
 import com.regent.rpush.route.service.IRpushMessageHisService;
 import com.regent.rpush.route.utils.MessageHandlerHolder;
-import com.regent.rpush.route.config.SessionUtils;
+import com.regent.rpush.route.utils.SessionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

@@ -14,7 +14,7 @@ import com.regent.rpush.route.service.IRpushMessageHisDetailService;
 import com.regent.rpush.route.service.IRpushMessageHisService;
 import com.regent.rpush.route.utils.PaginationUtil;
 import com.regent.rpush.route.utils.Qw;
-import com.regent.rpush.route.config.SessionUtils;
+import com.regent.rpush.route.utils.SessionUtils;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

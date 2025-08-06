@@ -11,7 +11,7 @@ import com.regent.rpush.dto.table.Pagination;
 import com.regent.rpush.route.model.RpushTemplateReceiverGroup;
 import com.regent.rpush.route.service.IRpushTemplateReceiverGroupService;
 import com.regent.rpush.route.utils.PaginationUtil;
-import com.regent.rpush.route.config.SessionUtils;
+import com.regent.rpush.route.utils.SessionUtils;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -6,7 +6,7 @@ import com.regent.rpush.api.route.RpushServerRegistrationService;
 import com.regent.rpush.dto.ApiResult;
 import com.regent.rpush.dto.rpushserver.RegisterDTO;
 import com.regent.rpush.dto.rpushserver.RpushServerRegistrationDTO;
-import com.regent.rpush.route.config.SessionUtils;
+import com.regent.rpush.route.utils.SessionUtils;
 import com.regent.rpush.route.model.RpushServerRegistration;
 import com.regent.rpush.route.service.IRpushServerRegistrationService;
 import com.regent.rpush.route.utils.Qw;

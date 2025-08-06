@@ -13,7 +13,7 @@ import com.regent.rpush.route.model.RpushMessageScheme;
 import com.regent.rpush.route.service.IRpushMessageSchemeService;
 import com.regent.rpush.route.utils.MessageHandlerUtils;
 import com.regent.rpush.route.utils.Qw;
-import com.regent.rpush.route.config.SessionUtils;
+import com.regent.rpush.route.utils.SessionUtils;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

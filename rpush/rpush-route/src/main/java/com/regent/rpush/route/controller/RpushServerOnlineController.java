@@ -10,7 +10,7 @@ import com.regent.rpush.dto.ApiResult;
 import com.regent.rpush.dto.StatusCode;
 import com.regent.rpush.dto.rpushserver.*;
 import com.regent.rpush.dto.table.Pagination;
-import com.regent.rpush.route.config.SessionUtils;
+import com.regent.rpush.route.utils.SessionUtils;
 import com.regent.rpush.route.model.RpushServerOnline;
 import com.regent.rpush.route.model.RpushServerRegistration;
 import com.regent.rpush.route.service.IRpushServerOnlineService;

@@ -1,6 +1,6 @@
 package com.regent.rpush.route.service.impl;
 
-import com.regent.rpush.route.config.SessionUtils;
+import com.regent.rpush.route.utils.SessionUtils;
 import com.regent.rpush.route.model.RpushServerRegistration;
 import com.regent.rpush.route.service.IRpushServerRegistrationService;
 import org.springframework.security.core.GrantedAuthority;

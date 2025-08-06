@@ -11,7 +11,7 @@ import com.regent.rpush.route.mapper.RpushTemplateReceiverMapper;
 import com.regent.rpush.route.model.RpushTemplateReceiver;
 import com.regent.rpush.route.service.IRpushTemplateReceiverService;
 import com.regent.rpush.route.utils.Qw;
-import com.regent.rpush.route.config.SessionUtils;
+import com.regent.rpush.route.utils.SessionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

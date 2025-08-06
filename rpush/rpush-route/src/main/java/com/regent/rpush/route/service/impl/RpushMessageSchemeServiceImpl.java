@@ -9,7 +9,7 @@ import com.regent.rpush.route.mapper.RpushMessageSchemeMapper;
 import com.regent.rpush.route.model.RpushMessageScheme;
 import com.regent.rpush.route.service.IRpushMessageSchemeService;
 import com.regent.rpush.route.utils.Qw;
-import com.regent.rpush.route.config.SessionUtils;
+import com.regent.rpush.route.utils.SessionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
