@@ -43,7 +43,7 @@ public class EmailMessageHandler extends MessageHandler<EmailMessageDTO> {
 
     @Override
     public void handle(EmailMessageDTO param) {
-        List<EmailConfig> configs = rpushPlatformConfigService.queryConfigOrDefault(param, EmailConfig.class, messageType().getPlatform());
+        List<EmailConfig> configs = iRpushConfigQueryService.queryConfigOrDefault(param, EmailConfig.class, messageType().getPlatform());
         String content = param.getContent();
         String title = param.getTitle();
         for (EmailConfig config : configs) {

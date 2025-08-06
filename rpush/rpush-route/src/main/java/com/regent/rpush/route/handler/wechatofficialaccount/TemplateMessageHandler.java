@@ -44,7 +44,7 @@ public class TemplateMessageHandler extends MessageHandler<TemplateMessageDTO> {
 
     @Override
     public void handle(TemplateMessageDTO param) {
-        List<WechatOfficialAccountConfig> configs = rpushPlatformConfigService.queryConfigOrDefault(param, WechatOfficialAccountConfig.class, messageType().getPlatform());
+        List<WechatOfficialAccountConfig> configs = iRpushConfigQueryService.queryConfigOrDefault(param, WechatOfficialAccountConfig.class, messageType().getPlatform());
         for (WechatOfficialAccountConfig config : configs) {
             Set<String> receiverUsers = rpushTemplateReceiverGroupService.listReceiverIds(param.getReceiverGroupIds(), param.getClientId()); // 先拿参数里分组的接收人
             if (param.getReceiverIds() != null) {

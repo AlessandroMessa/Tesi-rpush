@@ -42,7 +42,7 @@ public class AgentTextMessageHandler extends MessageHandler<TextMessageDTO> {
     @Override
     public void handle(TextMessageDTO param) {
         String content = param.getContent();
-        List<WechatWorkAgentConfig> configs = rpushPlatformConfigService.queryConfigOrDefault(param, WechatWorkAgentConfig.class, messageType().getPlatform());
+        List<WechatWorkAgentConfig> configs = iRpushConfigQueryService.queryConfigOrDefault(param, WechatWorkAgentConfig.class, messageType().getPlatform());
         for (WechatWorkAgentConfig config : configs) {
             Set<String> receiverUsers = rpushTemplateReceiverGroupService.listReceiverIds(param.getReceiverGroupIds(), param.getClientId()); // 先拿参数里分组的接收人
             if (param.getReceiverIds() != null) {

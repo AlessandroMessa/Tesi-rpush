@@ -13,7 +13,7 @@ import com.regent.rpush.dto.route.config.ConfigFieldVO;
 import com.regent.rpush.dto.common.config.ConfigValue;
 import com.regent.rpush.dto.route.sheme.*;
 import com.regent.rpush.route.model.RpushTemplate;
-import com.regent.rpush.route.service.IRpushPlatformConfigService;
+import com.regent.rpush.route.service.query.IRpushConfigQueryService;
 import com.regent.rpush.route.spi.IMessageHandlerDescriptor;
 import org.apache.commons.lang3.StringUtils;
 
@@ -162,7 +162,7 @@ public final class MessageHandlerUtils {
      * 把数据库里的配置数据转成具体的配置类
      *
      * @param messageHandler 对应的消息处理器
-     * @param configMap      数据库里的配置数据，这个方法可以查{@link IRpushPlatformConfigService#queryConfig(java.lang.String, java.util.List)}
+     * @param configMap      数据库里的配置数据，这个方法可以查{@link IRpushConfigQueryService#queryConfig(java.lang.String, java.util.List)}
      */
     public static List<Config> convertConfig(IMessageHandlerDescriptor messageHandler, Map<Long, Map<String, Object>> configMap) {
         try {
@@ -177,7 +177,7 @@ public final class MessageHandlerUtils {
      * 把数据库里的配置数据转成具体的配置类
      *
      * @param configType 配置类型
-     * @param configMap  数据库里的配置数据，这个方法可以查{@link IRpushPlatformConfigService#queryConfig(java.lang.String, java.util.List)}
+     * @param configMap  数据库里的配置数据，这个方法可以查{@link IRpushConfigQueryService#queryConfig(java.lang.String, java.util.List)}
      */
     public static List<Config> convertConfig(Class<?> configType, Map<Long, Map<String, Object>> configMap) {
         try {

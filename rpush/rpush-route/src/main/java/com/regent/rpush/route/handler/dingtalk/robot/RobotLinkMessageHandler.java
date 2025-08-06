@@ -41,7 +41,7 @@ public class RobotLinkMessageHandler extends MessageHandler<LinkMessageDTO> {
 
     @Override
     public void handle(LinkMessageDTO param) {
-        List<DingTalkRobotConfig> configs = rpushPlatformConfigService.queryConfigOrDefault(param, DingTalkRobotConfig.class, messageType().getPlatform());
+        List<DingTalkRobotConfig> configs = iRpushConfigQueryService.queryConfigOrDefault(param, DingTalkRobotConfig.class, messageType().getPlatform());
         for (DingTalkRobotConfig config : configs) {
             Set<String> receiverUsers = rpushTemplateReceiverGroupService.listReceiverIds(param.getReceiverGroupIds(), param.getClientId()); // 先拿参数里分组的接收人
             if (param.getReceiverIds() != null) {

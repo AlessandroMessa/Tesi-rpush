@@ -12,8 +12,9 @@ import com.regent.rpush.dto.route.config.ConfigTableDTO;
 import com.regent.rpush.dto.route.config.UpdateConfigDTO;
 import com.regent.rpush.dto.table.Pagination;
 import com.regent.rpush.route.model.RpushTemplate;
-import com.regent.rpush.route.service.IRpushPlatformConfigService;
 import com.regent.rpush.route.service.IRpushTemplateService;
+import com.regent.rpush.route.service.command.IRpushConfigCommandService;
+import com.regent.rpush.route.service.query.IRpushConfigQueryService;
 import com.regent.rpush.route.utils.MessageHandlerUtils;
 import com.regent.rpush.route.utils.Qw;
 import io.swagger.annotations.ApiOperation;
@@ -41,7 +42,9 @@ import java.util.Map;
 public class RpushPlatformConfigController {
 
     @Autowired
-    private IRpushPlatformConfigService rpushPlatformConfigService;
+    private IRpushConfigCommandService iRpushConfigCommandService;
+    @Autowired
+    private IRpushConfigQueryService iRpushConfigQueryService;
     @Autowired
     private IRpushTemplateService rpushTemplateService;
 
@@ -90,7 +93,7 @@ public class RpushPlatformConfigController {
                                                 String configName,
                                                 Integer pageNum,
                                                 Integer pageSize) {
-        ConfigTableDTO table = rpushPlatformConfigService.pageConfig(platform, null, configName, pageNum, pageSize);
+        ConfigTableDTO table = iRpushConfigQueryService.pageConfig(platform, null, configName, pageNum, pageSize);
         return ApiResult.of(table);
     }
 
@@ -101,7 +104,7 @@ public class RpushPlatformConfigController {
         if (configId == null || platform == null) {
             return ApiResult.of(null);
         }
-        ConfigTableDTO configTableDTO = rpushPlatformConfigService.pageConfig(platform, configId, null, null, null);
+        ConfigTableDTO configTableDTO = iRpushConfigQueryService.pageConfig(platform, configId, null, null, null);
         if (configTableDTO == null) {
             return ApiResult.of(null);
         }
@@ -135,21 +138,21 @@ public class RpushPlatformConfigController {
     @ApiOperation("更新配置")
     @PostMapping("/config")
     public ApiResult<String> updateConfig(@Valid @RequestBody UpdateConfigDTO updateConfigDTO) {
-        rpushPlatformConfigService.updateConfig(updateConfigDTO);
+        iRpushConfigCommandService.updateConfig(updateConfigDTO);
         return ApiResult.success();
     }
 
     @ApiOperation("设为默认")
     @GetMapping("/setDefault")
     public ApiResult<String> setDefault(String configId, boolean defaultFlag) {
-        rpushPlatformConfigService.setDefault(configId, defaultFlag);
+        iRpushConfigCommandService.setDefault(configId, defaultFlag);
         return ApiResult.success();
     }
 
     @ApiOperation("删除配置")
     @DeleteMapping("/config/{configId}")
     public ApiResult<String> delete(@PathVariable("configId") Long configId) {
-        rpushPlatformConfigService.delete(configId);
+        iRpushConfigCommandService.delete(configId);
         return ApiResult.success();
     }
 

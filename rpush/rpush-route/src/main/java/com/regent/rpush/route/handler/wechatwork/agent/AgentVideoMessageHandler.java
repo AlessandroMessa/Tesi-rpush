@@ -41,7 +41,7 @@ public class AgentVideoMessageHandler extends MessageHandler<VideoMessageDTO> {
 
     @Override
     public void handle(VideoMessageDTO param) {
-        List<WechatWorkAgentConfig> configs = rpushPlatformConfigService.queryConfigOrDefault(param, WechatWorkAgentConfig.class, messageType().getPlatform());
+        List<WechatWorkAgentConfig> configs = iRpushConfigQueryService.queryConfigOrDefault(param, WechatWorkAgentConfig.class, messageType().getPlatform());
         for (WechatWorkAgentConfig config : configs) {
             Set<String> receiverUsers = rpushTemplateReceiverGroupService.listReceiverIds(param.getReceiverGroupIds(), param.getClientId()); // 先拿参数里分组的接收人
             if (param.getReceiverIds() != null) {

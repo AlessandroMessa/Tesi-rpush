@@ -42,7 +42,7 @@ public class MarkdownMessageHandler extends MessageHandler<MarkdownMessageDTO> {
 
     @Override
     public void handle(MarkdownMessageDTO param) {
-        List<WechatWorkRobotConfig> configs = rpushPlatformConfigService.queryConfigOrDefault(param, WechatWorkRobotConfig.class, messageType().getPlatform());
+        List<WechatWorkRobotConfig> configs = iRpushConfigQueryService.queryConfigOrDefault(param, WechatWorkRobotConfig.class, messageType().getPlatform());
         for (WechatWorkRobotConfig config : configs) {
             Set<String> receiverUsers = rpushTemplateReceiverGroupService.listReceiverIds(param.getReceiverGroupIds(), param.getClientId()); // 先拿参数里分组的接收人
             if (param.getReceiverIds() != null) {

@@ -42,7 +42,7 @@ public class CorpTextMessageHandler extends MessageHandler<TextMessageDTO> {
 
     @Override
     public void handle(TextMessageDTO param) {
-        List<DingTalkCorpConfig> configs = rpushPlatformConfigService.queryConfigOrDefault(param, DingTalkCorpConfig.class, messageType().getPlatform());
+        List<DingTalkCorpConfig> configs = iRpushConfigQueryService.queryConfigOrDefault(param, DingTalkCorpConfig.class, messageType().getPlatform());
         for (DingTalkCorpConfig config : configs) {
             Set<String> receiverUsers = rpushTemplateReceiverGroupService.listReceiverIds(param.getReceiverGroupIds(), param.getClientId()); // 先拿参数里分组的接收人
             if (param.getReceiverIds() != null) {
