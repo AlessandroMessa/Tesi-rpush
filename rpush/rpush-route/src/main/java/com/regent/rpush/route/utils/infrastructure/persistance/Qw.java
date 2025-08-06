@@ -1,4 +1,4 @@
-package com.regent.rpush.route.utils;
+package com.regent.rpush.route.utils.infrastructure.persistance;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 

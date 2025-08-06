@@ -1,4 +1,4 @@
-package com.regent.rpush.route.utils;
+package com.regent.rpush.route.utils.infrastructure.session;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

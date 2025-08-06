@@ -8,8 +8,8 @@ import cn.hutool.extra.template.TemplateEngine;
 import cn.hutool.extra.template.TemplateUtil;
 import com.regent.rpush.dto.enumration.MessageType;
 import com.regent.rpush.route.handler.MessageHandler;
-import com.regent.rpush.route.utils.MessageHandlerHolder;
-import com.regent.rpush.route.utils.MessageHandlerUtils;
+import com.regent.rpush.route.utils.application.message.MessageHandlerHolder;
+import com.regent.rpush.route.utils.application.message.MessageHandlerUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 

@@ -1,4 +1,4 @@
-package com.regent.rpush.route.utils;
+package com.regent.rpush.route.utils.core;
 
 import com.regent.rpush.common.SingletonUtil;
 import me.chanjar.weixin.common.error.WxErrorException;

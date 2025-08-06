@@ -4,7 +4,7 @@ import com.regent.rpush.route.model.RpushServerRegistration;
 import com.regent.rpush.route.mapper.RpushServerRegistrationMapper;
 import com.regent.rpush.route.service.server.IRpushServerRegistrationService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.regent.rpush.route.utils.Qw;
+import com.regent.rpush.route.utils.infrastructure.persistance.Qw;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 

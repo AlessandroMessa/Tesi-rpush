@@ -10,7 +10,7 @@ import com.regent.rpush.route.model.RpushTemplate;
 import com.regent.rpush.route.model.RpushTemplateReceiver;
 import com.regent.rpush.route.service.template.IRpushTemplateReceiverService;
 import com.regent.rpush.route.service.template.IRpushTemplateService;
-import com.regent.rpush.route.utils.Qw;
+import com.regent.rpush.route.utils.infrastructure.persistance.Qw;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

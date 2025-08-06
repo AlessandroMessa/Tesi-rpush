@@ -12,7 +12,7 @@ import com.regent.rpush.route.model.RpushTemplate;
 import com.regent.rpush.route.model.RpushTemplateReceiverGroup;
 import com.regent.rpush.route.service.template.IRpushTemplateReceiverGroupService;
 import com.regent.rpush.route.service.template.IRpushTemplateService;
-import com.regent.rpush.route.utils.PaginationUtil;
+import com.regent.rpush.route.utils.infrastructure.pagination.PaginationUtil;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.regent.rpush.route.utils;
+package com.regent.rpush.route.utils.infrastructure.pagination;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.regent.rpush.dto.table.Pagination;

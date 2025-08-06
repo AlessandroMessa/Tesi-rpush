@@ -1,4 +1,4 @@
-package com.regent.rpush.route.utils;
+package com.regent.rpush.route.utils.application.message;
 
 import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.util.ReflectUtil;

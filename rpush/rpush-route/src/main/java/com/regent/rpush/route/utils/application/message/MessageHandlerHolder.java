@@ -1,4 +1,4 @@
-package com.regent.rpush.route.utils;
+package com.regent.rpush.route.utils.application.message;
 
 import com.regent.rpush.dto.enumration.MessageType;
 import com.regent.rpush.route.spi.IMessageHandlerDescriptor;

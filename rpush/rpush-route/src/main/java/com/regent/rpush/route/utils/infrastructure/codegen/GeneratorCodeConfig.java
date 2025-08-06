@@ -1,4 +1,4 @@
-package com.regent.rpush.route.utils;
+package com.regent.rpush.route.utils.infrastructure.codegen;
 
 /**
  * 自动生成mybatisplus的相关代码

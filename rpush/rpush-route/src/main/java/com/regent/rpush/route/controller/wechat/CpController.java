@@ -7,7 +7,7 @@ import com.regent.rpush.route.dto.wechat.CpUserImportParam;
 import com.regent.rpush.route.model.RpushTemplateReceiverGroup;
 import com.regent.rpush.route.service.template.IRpushTemplateReceiverGroupService;
 import com.regent.rpush.route.service.template.IRpushTemplateReceiverService;
-import com.regent.rpush.route.utils.RouteSingleton;
+import com.regent.rpush.route.utils.core.RouteSingleton;
 import me.chanjar.weixin.common.error.WxErrorException;
 import me.chanjar.weixin.cp.api.impl.WxCpServiceImpl;
 import me.chanjar.weixin.cp.bean.WxCpDepart;

@@ -10,7 +10,7 @@ import com.regent.rpush.dto.message.base.TypeMessageDTO;
 import com.regent.rpush.route.service.message.history.IRpushMessageHisService;
 import com.regent.rpush.route.service.config.query.IRpushConfigQueryService;
 import com.regent.rpush.route.spi.IMessageHandlerDescriptor;
-import com.regent.rpush.route.utils.MessageHandlerUtils;
+import com.regent.rpush.route.utils.application.message.MessageHandlerUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
