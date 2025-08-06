@@ -9,7 +9,7 @@ import com.regent.rpush.dto.enumration.MessagePlatformEnum;
 import com.regent.rpush.dto.enumration.MessageType;
 import com.regent.rpush.dto.enumration.SchemeValueType;
 import com.regent.rpush.dto.message.config.Config;
-import com.regent.rpush.dto.route.config.query.ConfigFieldVO;
+import com.regent.rpush.dto.route.config.query.field.ConfigFieldVO;
 import com.regent.rpush.dto.common.config.ConfigValue;
 import com.regent.rpush.dto.route.sheme.*;
 import com.regent.rpush.route.model.RpushTemplate;

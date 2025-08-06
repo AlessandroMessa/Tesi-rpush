@@ -1,5 +1,6 @@
-package com.regent.rpush.dto.route.config.query;
+package com.regent.rpush.dto.route.config.query.table;
 
+import com.regent.rpush.dto.route.config.query.field.ConfigFieldVO;
 import com.regent.rpush.dto.table.Pagination;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;

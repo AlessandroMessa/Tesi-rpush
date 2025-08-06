@@ -1,4 +1,4 @@
-package com.regent.rpush.dto.route.config.query;
+package com.regent.rpush.dto.route.config.query.field;
 
 import com.regent.rpush.dto.common.IdStrAndName;
 import com.regent.rpush.dto.common.config.ConfigValueType;
