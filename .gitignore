@@ -1,0 +1,28 @@
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+out/
+
+# VS Code
+.vscode/
+
+# File di backup o temporanei comuni
+*.log
+*.tmp
+*.bak
+*.swp
+*~
+
+# File Arcan o simili
+*.und
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Compilati Java (se presenti)
+*.class
+target/
+bin/
