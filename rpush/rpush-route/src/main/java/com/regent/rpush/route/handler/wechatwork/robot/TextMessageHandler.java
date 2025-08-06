@@ -9,7 +9,7 @@ import com.regent.rpush.dto.message.config.WechatWorkRobotConfig;
 import com.regent.rpush.dto.message.wechatwork.robot.TextMessageDTO;
 import com.regent.rpush.route.handler.MessageHandler;
 import com.regent.rpush.route.model.RpushMessageHisDetail;
-import com.regent.rpush.route.service.IRpushTemplateReceiverGroupService;
+import com.regent.rpush.route.service.template.IRpushTemplateReceiverGroupService;
 import me.chanjar.weixin.common.error.WxErrorException;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;

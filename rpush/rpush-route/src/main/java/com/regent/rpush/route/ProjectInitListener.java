@@ -1,6 +1,6 @@
 package com.regent.rpush.route;
 
-import com.regent.rpush.route.service.IOauthClientDetailsService;
+import com.regent.rpush.route.service.oauth.IOauthClientDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;

@@ -3,7 +3,7 @@ package com.regent.rpush.route.loadbalancer;
 import cn.hutool.json.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.regent.rpush.route.model.RpushServerOnline;
-import com.regent.rpush.route.service.IRpushServerOnlineService;
+import com.regent.rpush.route.service.server.IRpushServerOnlineService;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
 import org.springframework.beans.factory.annotation.Autowired;

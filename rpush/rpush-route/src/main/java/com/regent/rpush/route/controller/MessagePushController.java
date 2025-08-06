@@ -14,7 +14,7 @@ import com.regent.rpush.dto.message.base.MessagePushDTO;
 import com.regent.rpush.dto.message.base.TypeMessageDTO;
 import com.regent.rpush.route.handler.MessageHandler;
 import com.regent.rpush.route.model.RpushMessageHis;
-import com.regent.rpush.route.service.IRpushMessageHisService;
+import com.regent.rpush.route.service.message.history.IRpushMessageHisService;
 import com.regent.rpush.route.utils.MessageHandlerHolder;
 import com.regent.rpush.route.utils.SessionUtils;
 import org.apache.commons.lang3.StringUtils;

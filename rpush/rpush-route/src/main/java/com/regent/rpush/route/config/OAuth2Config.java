@@ -1,6 +1,6 @@
 package com.regent.rpush.route.config;
 
-import com.regent.rpush.route.service.impl.RpushUserDetailService;
+import com.regent.rpush.route.service.user.impl.RpushUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

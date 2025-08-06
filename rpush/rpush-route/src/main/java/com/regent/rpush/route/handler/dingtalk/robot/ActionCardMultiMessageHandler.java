@@ -12,7 +12,7 @@ import com.regent.rpush.dto.message.dingtalk.robot.ActionCardMultiMessageDTO;
 import com.regent.rpush.dto.message.dingtalk.robot.BtnJsonDTO;
 import com.regent.rpush.route.handler.MessageHandler;
 import com.regent.rpush.route.model.RpushMessageHisDetail;
-import com.regent.rpush.route.service.IRpushTemplateReceiverGroupService;
+import com.regent.rpush.route.service.template.IRpushTemplateReceiverGroupService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

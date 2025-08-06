@@ -13,7 +13,7 @@ import com.regent.rpush.dto.route.config.ConfigFieldVO;
 import com.regent.rpush.dto.common.config.ConfigValue;
 import com.regent.rpush.dto.route.sheme.*;
 import com.regent.rpush.route.model.RpushTemplate;
-import com.regent.rpush.route.service.query.IRpushConfigQueryService;
+import com.regent.rpush.route.service.config.query.IRpushConfigQueryService;
 import com.regent.rpush.route.spi.IMessageHandlerDescriptor;
 import org.apache.commons.lang3.StringUtils;
 

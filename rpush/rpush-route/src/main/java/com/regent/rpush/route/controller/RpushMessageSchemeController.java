@@ -10,7 +10,7 @@ import com.regent.rpush.dto.enumration.MessageType;
 import com.regent.rpush.dto.route.sheme.SchemeDTO;
 import com.regent.rpush.dto.route.sheme.SchemeFieldVO;
 import com.regent.rpush.route.model.RpushMessageScheme;
-import com.regent.rpush.route.service.IRpushMessageSchemeService;
+import com.regent.rpush.route.service.message.scheme.IRpushMessageSchemeService;
 import com.regent.rpush.route.utils.MessageHandlerUtils;
 import com.regent.rpush.route.utils.Qw;
 import com.regent.rpush.route.utils.SessionUtils;
