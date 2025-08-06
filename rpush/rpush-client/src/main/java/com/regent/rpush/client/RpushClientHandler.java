@@ -1,5 +1,6 @@
 package com.regent.rpush.client;
 
+import com.regent.rpush.client.api.ClientContext;
 import com.regent.rpush.common.protocol.MessageProto;
 import com.regent.rpush.common.protocol.PingPong;
 import io.netty.channel.ChannelFutureListener;
@@ -18,16 +19,16 @@ import java.util.List;
 @ChannelHandler.Sharable
 public class RpushClientHandler extends SimpleChannelInboundHandler<MessageProto.MessageProtocol> {
 
-    private final RpushClient rpushClient;
+    private final ClientContext clientContext;
 
-    public RpushClientHandler(RpushClient rpushClient) {
-        this.rpushClient = rpushClient;
+    public RpushClientHandler(ClientContext clientContext) {
+        this.clientContext = clientContext;
     }
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         // 尝试重连
-        rpushClient.reconnect();
+        clientContext.reconnect();
     }
 
     @Override
@@ -55,7 +56,7 @@ public class RpushClientHandler extends SimpleChannelInboundHandler<MessageProto
                 .type(messageProtocol.getType())
                 .build();
 
-        List<MsgProcessor> msgProcessors = rpushClient.getMsgProcessors();
+        List<MsgProcessor> msgProcessors = clientContext.getMsgProcessors();
         for (MsgProcessor msgProcessor : msgProcessors) {
             boolean process = msgProcessor.process(msg);
             if (process) {

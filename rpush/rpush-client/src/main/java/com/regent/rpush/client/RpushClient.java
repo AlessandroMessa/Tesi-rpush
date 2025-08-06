@@ -1,6 +1,7 @@
 package com.regent.rpush.client;
 
 import cn.hutool.core.thread.ThreadFactoryBuilder;
+import com.regent.rpush.client.api.ClientContext;
 import com.regent.rpush.client.api.RouteApi;
 import com.regent.rpush.common.Constants;
 import com.regent.rpush.common.protocol.MessageProto;
@@ -27,7 +28,7 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
 
-public class RpushClient {
+public class RpushClient implements ClientContext {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(RpushClient.class);
 
@@ -53,8 +54,8 @@ public class RpushClient {
         msgProcessors.add(msgProcessor);
         msgProcessors.sort(Comparator.comparingInt(MsgProcessor::getOrder));
     }
-
-    List<MsgProcessor> getMsgProcessors() {
+    @Override
+    public List<MsgProcessor> getMsgProcessors() {
         return msgProcessors;
     }
 
@@ -144,8 +145,8 @@ public class RpushClient {
         }
         channel = (SocketChannel) future.channel();
     }
-
-    void reconnect() {
+    @Override
+    public void reconnect() {
         ScheduledExecutorService reconnectExecutor = getReconnectExecutor();
         reconnectExecutor.scheduleAtFixedRate(() -> {
             if (channel != null && channel.isActive()) {
