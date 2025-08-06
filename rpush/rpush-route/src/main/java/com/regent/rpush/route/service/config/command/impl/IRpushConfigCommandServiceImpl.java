@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.regent.rpush.dto.enumration.MessagePlatformEnum;
-import com.regent.rpush.dto.route.config.UpdateConfigDTO;
+import com.regent.rpush.dto.route.config.command.UpdateConfigDTO;
 import com.regent.rpush.route.mapper.RpushPlatformConfigMapper;
 import com.regent.rpush.route.model.RpushPlatformConfig;
 import com.regent.rpush.route.model.RpushPlatformConfigValue;

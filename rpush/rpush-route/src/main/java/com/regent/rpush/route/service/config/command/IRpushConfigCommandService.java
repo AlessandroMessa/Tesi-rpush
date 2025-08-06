@@ -1,7 +1,7 @@
 package com.regent.rpush.route.service.config.command;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.regent.rpush.dto.route.config.UpdateConfigDTO;
+import com.regent.rpush.dto.route.config.command.UpdateConfigDTO;
 import com.regent.rpush.route.model.RpushPlatformConfig;
 
 public interface IRpushConfigCommandService extends IService<RpushPlatformConfig> {

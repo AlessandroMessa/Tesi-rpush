@@ -3,7 +3,7 @@ package com.regent.rpush.route.service.config.query;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.regent.rpush.dto.enumration.MessagePlatformEnum;
 import com.regent.rpush.dto.message.base.BaseMessage;
-import com.regent.rpush.dto.route.config.ConfigTableDTO;
+import com.regent.rpush.dto.route.config.query.ConfigTableDTO;
 import com.regent.rpush.route.model.RpushPlatformConfig;
 
 import java.util.List;

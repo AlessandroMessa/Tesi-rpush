@@ -1,4 +1,4 @@
-package com.regent.rpush.dto.route.config;
+package com.regent.rpush.dto.route.config.command;
 
 import com.regent.rpush.dto.enumration.MessagePlatformEnum;
 import io.swagger.annotations.ApiModelProperty;

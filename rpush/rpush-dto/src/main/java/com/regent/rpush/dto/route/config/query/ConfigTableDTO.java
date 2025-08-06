@@ -1,4 +1,4 @@
-package com.regent.rpush.dto.route.config;
+package com.regent.rpush.dto.route.config.query;
 
 import com.regent.rpush.dto.table.Pagination;
 import io.swagger.annotations.ApiModelProperty;
