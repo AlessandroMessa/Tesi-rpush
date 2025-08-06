@@ -1,4 +1,4 @@
-package com.regent.rpush.client.api;
+package com.regent.rpush.client.client;
 
 import com.regent.rpush.client.MsgProcessor;
 

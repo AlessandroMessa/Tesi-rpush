@@ -1,6 +1,7 @@
-package com.regent.rpush.client;
+package com.regent.rpush.client.client;
 
-import com.regent.rpush.client.api.ClientContext;
+import com.regent.rpush.client.Msg;
+import com.regent.rpush.client.MsgProcessor;
 import com.regent.rpush.common.protocol.MessageProto;
 import com.regent.rpush.common.protocol.PingPong;
 import io.netty.channel.ChannelFutureListener;

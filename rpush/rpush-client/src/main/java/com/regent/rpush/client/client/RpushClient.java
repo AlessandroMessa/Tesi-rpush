@@ -1,7 +1,7 @@
-package com.regent.rpush.client;
+package com.regent.rpush.client.client;
 
 import cn.hutool.core.thread.ThreadFactoryBuilder;
-import com.regent.rpush.client.api.ClientContext;
+import com.regent.rpush.client.MsgProcessor;
 import com.regent.rpush.client.api.RouteApi;
 import com.regent.rpush.common.Constants;
 import com.regent.rpush.common.protocol.MessageProto;
