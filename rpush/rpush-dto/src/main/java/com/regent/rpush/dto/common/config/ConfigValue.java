@@ -1,6 +1,4 @@
-package com.regent.rpush.dto.route.config;
-
-import com.regent.rpush.dto.enumration.ConfigValueType;
+package com.regent.rpush.dto.common.config;
 
 import java.lang.annotation.*;
 

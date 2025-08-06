@@ -3,7 +3,7 @@ package com.regent.rpush.route.controller;
 
 import com.regent.rpush.dto.ApiResult;
 import com.regent.rpush.dto.common.IdStrAndName;
-import com.regent.rpush.dto.enumration.ConfigValueType;
+import com.regent.rpush.dto.common.config.ConfigValueType;
 import com.regent.rpush.dto.enumration.MessagePlatformEnum;
 import com.regent.rpush.dto.enumration.MessageType;
 import com.regent.rpush.dto.route.PlatformDTO;

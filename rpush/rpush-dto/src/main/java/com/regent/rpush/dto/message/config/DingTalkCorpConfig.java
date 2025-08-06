@@ -1,6 +1,6 @@
 package com.regent.rpush.dto.message.config;
 
-import com.regent.rpush.dto.route.config.ConfigValue;
+import com.regent.rpush.dto.common.config.ConfigValue;
 import lombok.*;
 
 /**

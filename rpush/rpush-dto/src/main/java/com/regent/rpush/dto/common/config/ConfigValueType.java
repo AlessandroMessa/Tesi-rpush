@@ -1,4 +1,4 @@
-package com.regent.rpush.dto.enumration;
+package com.regent.rpush.dto.common.config;
 
 /**
  * 配置值类型

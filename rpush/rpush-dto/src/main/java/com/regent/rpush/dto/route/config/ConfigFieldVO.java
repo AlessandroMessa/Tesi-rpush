@@ -1,7 +1,7 @@
 package com.regent.rpush.dto.route.config;
 
 import com.regent.rpush.dto.common.IdStrAndName;
-import com.regent.rpush.dto.enumration.ConfigValueType;
+import com.regent.rpush.dto.common.config.ConfigValueType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

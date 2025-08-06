@@ -7,7 +7,7 @@ import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.regent.rpush.common.PageUtil;
-import com.regent.rpush.dto.enumration.ConfigValueType;
+import com.regent.rpush.dto.common.config.ConfigValueType;
 import com.regent.rpush.dto.enumration.MessagePlatformEnum;
 import com.regent.rpush.dto.message.base.BaseMessage;
 import com.regent.rpush.dto.message.config.Config;
