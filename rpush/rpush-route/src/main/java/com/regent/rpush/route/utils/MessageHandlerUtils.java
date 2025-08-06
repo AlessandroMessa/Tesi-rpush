@@ -12,9 +12,9 @@ import com.regent.rpush.dto.message.config.Config;
 import com.regent.rpush.dto.route.config.ConfigFieldVO;
 import com.regent.rpush.dto.route.config.ConfigValue;
 import com.regent.rpush.dto.route.sheme.*;
-import com.regent.rpush.route.handler.MessageHandler;
 import com.regent.rpush.route.model.RpushTemplate;
 import com.regent.rpush.route.service.IRpushPlatformConfigService;
+import com.regent.rpush.route.spi.IMessageHandlerDescriptor;
 import org.apache.commons.lang3.StringUtils;
 
 import java.lang.reflect.Field;
@@ -86,7 +86,7 @@ public final class MessageHandlerUtils {
     /**
      * 获取消息处理器的参数类型
      */
-    public static Class<?> getParamType(MessageHandler<?> messageHandler) {
+    public static Class<?> getParamType(IMessageHandlerDescriptor messageHandler) {
         // 缓存单例，避免每次都执行反射去参数类型
         return SingletonUtil.get("param-type-" + messageHandler.getClass().getName(), () -> {
             ParameterizedType superclass = (ParameterizedType) messageHandler.getClass().getGenericSuperclass();
@@ -97,7 +97,7 @@ public final class MessageHandlerUtils {
     /**
      * 获取消息处理器的配置类型
      */
-    public static Class<? extends Config> getConfigType(MessageHandler<?> messageHandler) {
+    public static Class<? extends Config> getConfigType(IMessageHandlerDescriptor messageHandler) {
         return messageHandler.messageType().getPlatform().getConfigType();
     }
 
@@ -154,7 +154,7 @@ public final class MessageHandlerUtils {
     /**
      * 获取消息处理的的配置的所有字段名称
      */
-    public static List<ConfigFieldVO> listConfigFieldName(MessageHandler<?> messageHandler) {
+    public static List<ConfigFieldVO> listConfigFieldName(IMessageHandlerDescriptor messageHandler) {
         return listConfigFieldName(messageHandler.messageType().getPlatform());
     }
 
@@ -164,7 +164,7 @@ public final class MessageHandlerUtils {
      * @param messageHandler 对应的消息处理器
      * @param configMap      数据库里的配置数据，这个方法可以查{@link IRpushPlatformConfigService#queryConfig(java.lang.String, java.util.List)}
      */
-    public static List<Config> convertConfig(MessageHandler<?> messageHandler, Map<Long, Map<String, Object>> configMap) {
+    public static List<Config> convertConfig(IMessageHandlerDescriptor messageHandler, Map<Long, Map<String, Object>> configMap) {
         try {
             Class<?> configType = MessageHandlerUtils.getConfigType(messageHandler); // 拿到配置的类型
             return convertConfig(configType, configMap);
@@ -216,7 +216,7 @@ public final class MessageHandlerUtils {
      */
     public static List<SchemeFieldVO> listSchemeField(MessageType messageType) {
         return SingletonUtil.get(messageType + SchemeFieldVO.class.getName(), () -> {
-            MessageHandler<?> messageHandler = MessageHandlerHolder.get(messageType);
+            IMessageHandlerDescriptor messageHandler = MessageHandlerHolder.get(messageType);
             ParameterizedType genericSuperclass = (ParameterizedType) messageHandler.getClass().getGenericSuperclass();
             Class<?> schemeType = (Class<?>) genericSuperclass.getActualTypeArguments()[0];
 

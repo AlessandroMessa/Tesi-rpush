@@ -9,6 +9,7 @@ import com.regent.rpush.dto.message.base.MessagePushDTO;
 import com.regent.rpush.dto.message.base.TypeMessageDTO;
 import com.regent.rpush.route.service.IRpushMessageHisService;
 import com.regent.rpush.route.service.IRpushPlatformConfigService;
+import com.regent.rpush.route.spi.IMessageHandlerDescriptor;
 import com.regent.rpush.route.utils.MessageHandlerUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +23,7 @@ import java.util.Map;
  * @author 钟宝林
  * @date 2021/2/8 20:25
  **/
-public abstract class MessageHandler<T extends BaseMessage> implements EventHandler<MessagePushDTO> {
+public abstract class MessageHandler<T extends BaseMessage> implements EventHandler<MessagePushDTO>, IMessageHandlerDescriptor {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(MessageHandler.class);
 
@@ -63,11 +64,18 @@ public abstract class MessageHandler<T extends BaseMessage> implements EventHand
     /**
      * 所有消息处理器必须实现这个接口，标识自己处理的是哪个消息类型
      */
+    @Override
     public abstract MessageType messageType();
 
     /**
      * 实现这个接口来处理消息，再正式调用这个方法之前会处理好需要的参数和需要的配置
      */
     public abstract void handle(T param);
+
+    @Override
+    public Class<?> payloadType() {
+        // puoi riutilizzare il tuo utility interno:
+        return MessageHandlerUtils.getParamType(this);
+    }
 
 }
