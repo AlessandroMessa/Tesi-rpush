@@ -3,6 +3,7 @@ package com.regent.rpush.route.service.template.batch.impl;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.lang.UUID;
 import com.regent.rpush.dto.enumration.MessagePlatformEnum;
+import com.regent.rpush.route.api.batch.ReceiverBatchRequest;
 import com.regent.rpush.route.dto.ReceiverBatchInsertDTO;
 import com.regent.rpush.route.mapper.RpushTemplateReceiverMapper;
 import com.regent.rpush.route.service.template.batch.IRpushTemplateReceiverBatchService;
@@ -20,21 +21,21 @@ public class IRpushTemplateReceiverBatchServiceImpl implements IRpushTemplateRec
     private RpushTemplateReceiverMapper rpushTemplateReceiverMapper;
 
     @Override
-    public void batchInsert(MessagePlatformEnum platform, List<ReceiverBatchInsertDTO> receivers) {
+    public void batchInsert(ReceiverBatchRequest receiverBatchRequest) {
         String clientId = SessionUtils.getClientId();
         String requestNo = UUID.randomUUID().toString().replaceAll("-", "");
         try {
             StringBuilder insertSql = new StringBuilder();
             insertSql.append(" INSERT INTO import_receiver (request_no, platform, receiver_id, receiver_name, group_name, client_id) VALUES ");
-            List<String> insertSqlItems = new ArrayList<>(receivers.size());
-            for (ReceiverBatchInsertDTO receiver : receivers) {
+            List<String> insertSqlItems = new ArrayList<>(receiverBatchRequest.getReceivers().size());
+            for (ReceiverBatchInsertDTO receiver : receiverBatchRequest.getReceivers()) {
                 if (StringUtils.isBlank(receiver.getReceiverId()) || StringUtils.isBlank(receiver.getReceiverName())) {
                     continue;
                 }
 
                 List<String> receiverFields = new ArrayList<>();
                 receiverFields.add("'" + requestNo + "'");
-                receiverFields.add("'" + platform.name() + "'");
+                receiverFields.add("'" + receiverBatchRequest.getPlatform().name() + "'");
                 receiverFields.add("'" + receiver.getReceiverId() + "'");
                 receiverFields.add("'" + receiver.getReceiverName() + "'");
                 String receiverGroupName = receiver.getReceiverGroupName();

@@ -2,6 +2,7 @@ package com.regent.rpush.route.controller.wechat;
 
 import com.regent.rpush.dto.ApiResult;
 import com.regent.rpush.dto.enumration.MessagePlatformEnum;
+import com.regent.rpush.route.api.batch.ReceiverBatchRequest;
 import com.regent.rpush.route.dto.ReceiverBatchInsertDTO;
 import com.regent.rpush.route.dto.wechat.CpUserImportParam;
 import com.regent.rpush.route.model.RpushTemplateReceiverGroup;
@@ -101,7 +102,7 @@ public class CpController {
                 }
             }
         }
-        rpushTemplateReceiverService.batchInsert(MessagePlatformEnum.WECHAT_WORK_AGENT, receivers);
+        rpushTemplateReceiverService.batchInsert(new ReceiverBatchRequest(MessagePlatformEnum.WECHAT_WORK_AGENT, receivers));
         return ApiResult.of("导入成功");
     }
 

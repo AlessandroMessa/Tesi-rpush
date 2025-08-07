@@ -11,6 +11,7 @@ import com.regent.rpush.dto.ApiResult;
 import com.regent.rpush.dto.enumration.MessagePlatformEnum;
 import com.regent.rpush.dto.route.template.receiver.PageReceiverParam;
 import com.regent.rpush.dto.table.Pagination;
+import com.regent.rpush.route.api.batch.ReceiverBatchRequest;
 import com.regent.rpush.route.dto.ReceiverBatchInsertDTO;
 import com.regent.rpush.route.model.RpushTemplateReceiver;
 import com.regent.rpush.route.model.RpushTemplateReceiverGroup;
@@ -204,7 +205,7 @@ public class RpushTemplateReceiverController {
          * 加上存储数据库
          */
         private void saveData() {
-            iRpushTemplateReceiverBatchService.batchInsert(platform, list);
+            iRpushTemplateReceiverBatchService.batchInsert(new ReceiverBatchRequest(platform,list));
         }
     }
 }
