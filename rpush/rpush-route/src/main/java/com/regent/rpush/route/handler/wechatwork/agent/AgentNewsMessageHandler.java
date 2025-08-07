@@ -8,7 +8,7 @@ import com.regent.rpush.dto.message.wechatwork.agent.ArticleDTO;
 import com.regent.rpush.dto.message.wechatwork.agent.NewsMessageDTO;
 import com.regent.rpush.route.handler.MessageHandler;
 import com.regent.rpush.route.model.RpushMessageHisDetail;
-import com.regent.rpush.route.service.template.IRpushTemplateReceiverGroupService;
+import com.regent.rpush.route.service.template.group.IRpushTemplateReceiverGroupService;
 import me.chanjar.weixin.cp.api.impl.WxCpServiceImpl;
 import me.chanjar.weixin.cp.bean.article.NewArticle;
 import me.chanjar.weixin.cp.bean.message.WxCpMessage;

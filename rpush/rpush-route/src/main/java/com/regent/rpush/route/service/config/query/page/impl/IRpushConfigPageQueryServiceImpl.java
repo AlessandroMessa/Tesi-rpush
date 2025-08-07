@@ -17,7 +17,7 @@ import com.regent.rpush.route.service.config.query.api.ClientContext;
 import com.regent.rpush.route.service.config.query.api.ConfigFieldProvider;
 import com.regent.rpush.route.service.config.query.batch.IRpushConfigBatchQueryService;
 import com.regent.rpush.route.service.config.query.page.IRpushConfigPageQueryService;
-import com.regent.rpush.route.service.template.IRpushTemplateService;
+import com.regent.rpush.route.service.template.core.IRpushTemplateService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

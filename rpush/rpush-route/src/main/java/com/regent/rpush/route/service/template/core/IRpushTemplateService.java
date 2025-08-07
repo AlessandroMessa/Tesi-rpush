@@ -1,4 +1,4 @@
-package com.regent.rpush.route.service.template;
+package com.regent.rpush.route.service.template.core;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.regent.rpush.route.model.RpushTemplate;

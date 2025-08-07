@@ -13,7 +13,7 @@ import com.regent.rpush.dto.route.config.command.UpdateConfigDTO;
 import com.regent.rpush.dto.table.Pagination;
 import com.regent.rpush.route.model.RpushTemplate;
 import com.regent.rpush.route.service.config.query.page.IRpushConfigPageQueryService;
-import com.regent.rpush.route.service.template.IRpushTemplateService;
+import com.regent.rpush.route.service.template.core.IRpushTemplateService;
 import com.regent.rpush.route.service.config.command.IRpushConfigCommandService;
 import com.regent.rpush.route.utils.application.message.MessageHandlerUtils;
 import com.regent.rpush.route.utils.infrastructure.persistance.Qw;

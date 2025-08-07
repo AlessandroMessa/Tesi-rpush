@@ -9,7 +9,7 @@ import com.regent.rpush.dto.enumration.MessagePlatformEnum;
 import com.regent.rpush.dto.route.template.receiver.group.PageGroupParam;
 import com.regent.rpush.dto.table.Pagination;
 import com.regent.rpush.route.model.RpushTemplateReceiverGroup;
-import com.regent.rpush.route.service.template.IRpushTemplateReceiverGroupService;
+import com.regent.rpush.route.service.template.group.IRpushTemplateReceiverGroupService;
 import com.regent.rpush.route.utils.infrastructure.pagination.PaginationUtil;
 import com.regent.rpush.route.utils.infrastructure.session.SessionUtils;
 import io.swagger.annotations.ApiOperation;

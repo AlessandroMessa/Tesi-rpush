@@ -8,7 +8,7 @@ import com.regent.rpush.dto.message.wechatofficialaccount.TemplateMessageDTO;
 import com.regent.rpush.dto.message.wechatofficialaccount.WechatTemplateData;
 import com.regent.rpush.route.handler.MessageHandler;
 import com.regent.rpush.route.model.RpushMessageHisDetail;
-import com.regent.rpush.route.service.template.IRpushTemplateReceiverGroupService;
+import com.regent.rpush.route.service.template.group.IRpushTemplateReceiverGroupService;
 import me.chanjar.weixin.mp.api.WxMpService;
 import me.chanjar.weixin.mp.api.impl.WxMpServiceImpl;
 import me.chanjar.weixin.mp.bean.template.WxMpTemplateData;

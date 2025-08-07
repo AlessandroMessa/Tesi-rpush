@@ -1,4 +1,4 @@
-package com.regent.rpush.route.service.template.impl;
+package com.regent.rpush.route.service.template.group.impl;
 
 import cn.hutool.core.lang.Assert;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.regent.rpush.route.mapper.RpushTemplateReceiverGroupMapper;
 import com.regent.rpush.route.model.RpushTemplateReceiver;
 import com.regent.rpush.route.model.RpushTemplateReceiverGroup;
-import com.regent.rpush.route.service.template.IRpushTemplateReceiverGroupService;
+import com.regent.rpush.route.service.template.group.IRpushTemplateReceiverGroupService;
 import com.regent.rpush.route.service.template.crud.IRpushTemplateReceiverCrudService;
 import com.regent.rpush.route.utils.infrastructure.persistance.Qw;
 import com.regent.rpush.route.utils.infrastructure.session.SessionUtils;

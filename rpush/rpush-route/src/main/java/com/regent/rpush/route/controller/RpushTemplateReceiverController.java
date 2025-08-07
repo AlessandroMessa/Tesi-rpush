@@ -15,7 +15,7 @@ import com.regent.rpush.route.api.batch.ReceiverBatchRequest;
 import com.regent.rpush.route.dto.ReceiverBatchInsertDTO;
 import com.regent.rpush.route.model.RpushTemplateReceiver;
 import com.regent.rpush.route.model.RpushTemplateReceiverGroup;
-import com.regent.rpush.route.service.template.IRpushTemplateReceiverGroupService;
+import com.regent.rpush.route.service.template.group.IRpushTemplateReceiverGroupService;
 import com.regent.rpush.route.service.template.batch.IRpushTemplateReceiverBatchService;
 import com.regent.rpush.route.service.template.crud.IRpushTemplateReceiverCrudService;
 import com.regent.rpush.route.utils.infrastructure.pagination.PaginationUtil;

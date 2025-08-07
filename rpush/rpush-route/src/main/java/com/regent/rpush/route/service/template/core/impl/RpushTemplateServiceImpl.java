@@ -1,4 +1,4 @@
-package com.regent.rpush.route.service.template.impl;
+package com.regent.rpush.route.service.template.core.impl;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.lang.Assert;
@@ -8,7 +8,7 @@ import com.regent.rpush.dto.enumration.MessagePlatformEnum;
 import com.regent.rpush.route.mapper.RpushTemplateMapper;
 import com.regent.rpush.route.model.RpushTemplate;
 import com.regent.rpush.route.model.RpushTemplateReceiver;
-import com.regent.rpush.route.service.template.IRpushTemplateService;
+import com.regent.rpush.route.service.template.core.IRpushTemplateService;
 import com.regent.rpush.route.service.template.crud.IRpushTemplateReceiverCrudService;
 import com.regent.rpush.route.utils.infrastructure.persistance.Qw;
 import org.apache.commons.lang3.StringUtils;

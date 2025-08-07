@@ -11,7 +11,7 @@ import com.regent.rpush.dto.message.config.DingTalkRobotConfig;
 import com.regent.rpush.dto.message.dingtalk.robot.ActionCardSingleMessageDTO;
 import com.regent.rpush.route.handler.MessageHandler;
 import com.regent.rpush.route.model.RpushMessageHisDetail;
-import com.regent.rpush.route.service.template.IRpushTemplateReceiverGroupService;
+import com.regent.rpush.route.service.template.group.IRpushTemplateReceiverGroupService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

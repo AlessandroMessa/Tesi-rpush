@@ -1,4 +1,4 @@
-package com.regent.rpush.route.service.template;
+package com.regent.rpush.route.service.template.group;
 
 import com.regent.rpush.route.model.RpushTemplateReceiverGroup;
 import com.baomidou.mybatisplus.extension.service.IService;

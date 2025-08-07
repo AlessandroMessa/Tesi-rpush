@@ -9,7 +9,7 @@ import com.regent.rpush.dto.message.EmailMessageDTO;
 import com.regent.rpush.dto.message.config.EmailConfig;
 import com.regent.rpush.route.model.RpushMessageHisDetail;
 import com.regent.rpush.route.service.message.history.IRpushMessageHisService;
-import com.regent.rpush.route.service.template.IRpushTemplateReceiverGroupService;
+import com.regent.rpush.route.service.template.group.IRpushTemplateReceiverGroupService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
