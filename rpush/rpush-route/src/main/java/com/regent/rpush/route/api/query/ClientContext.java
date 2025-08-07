@@ -1,4 +1,4 @@
-package com.regent.rpush.route.service.config.query.api;
+package com.regent.rpush.route.api.query;
 
 public interface ClientContext {
     String getClientId();

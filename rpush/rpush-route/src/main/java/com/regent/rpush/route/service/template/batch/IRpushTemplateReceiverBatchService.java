@@ -1,8 +1,6 @@
 package com.regent.rpush.route.service.template.batch;
 
-import com.regent.rpush.dto.enumration.MessagePlatformEnum;
 import com.regent.rpush.route.api.batch.ReceiverBatchRequest;
-import com.regent.rpush.route.dto.ReceiverBatchInsertDTO;
 
 import java.util.List;
 
