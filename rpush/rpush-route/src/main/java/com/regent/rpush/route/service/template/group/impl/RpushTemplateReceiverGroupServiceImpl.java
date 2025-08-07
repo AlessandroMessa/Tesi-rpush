@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.regent.rpush.route.mapper.RpushTemplateReceiverGroupMapper;
 import com.regent.rpush.route.model.RpushTemplateReceiver;
 import com.regent.rpush.route.model.RpushTemplateReceiverGroup;
+import com.regent.rpush.route.service.template.api.IRpushTemplateReceiverService;
 import com.regent.rpush.route.service.template.group.IRpushTemplateReceiverGroupService;
 import com.regent.rpush.route.service.template.crud.IRpushTemplateReceiverCrudService;
 import com.regent.rpush.route.utils.infrastructure.persistance.Qw;
@@ -32,7 +33,7 @@ import java.util.stream.Collectors;
 public class RpushTemplateReceiverGroupServiceImpl extends ServiceImpl<RpushTemplateReceiverGroupMapper, RpushTemplateReceiverGroup> implements IRpushTemplateReceiverGroupService {
 
     @Autowired
-    private IRpushTemplateReceiverCrudService rpushTemplateReceiverService;
+    private IRpushTemplateReceiverService rpushTemplateReceiverService;
 
     @Override
     public void updateGroup(RpushTemplateReceiverGroup group) {
@@ -63,12 +64,14 @@ public class RpushTemplateReceiverGroupServiceImpl extends ServiceImpl<RpushTemp
 
     @Override
     public Set<String> listReceiverIds(List<Long> receiverGroupIds, String clientId) {
-        if (receiverGroupIds == null || receiverGroupIds.size() <= 0) {
+        if (receiverGroupIds == null || receiverGroupIds.isEmpty()) {
             return new HashSet<>();
         }
-        List<RpushTemplateReceiver> receivers = rpushTemplateReceiverService.list(Qw.newInstance(RpushTemplateReceiver.class).eq("client_id", clientId));
-        receivers = receivers == null ? new ArrayList<>() : receivers;
-        return receivers.stream().map(RpushTemplateReceiver::getReceiverId).collect(Collectors.toSet());
+        List<RpushTemplateReceiver> receivers =
+                rpushTemplateReceiverService.listReceiversByClient(clientId);
+        return receivers.stream()
+                .map(RpushTemplateReceiver::getReceiverId)
+                .collect(Collectors.toSet());
     }
 
     @Override

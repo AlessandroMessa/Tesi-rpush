@@ -8,8 +8,8 @@ import com.regent.rpush.dto.enumration.MessagePlatformEnum;
 import com.regent.rpush.route.mapper.RpushTemplateMapper;
 import com.regent.rpush.route.model.RpushTemplate;
 import com.regent.rpush.route.model.RpushTemplateReceiver;
+import com.regent.rpush.route.service.template.api.IRpushTemplateReceiverService;
 import com.regent.rpush.route.service.template.core.IRpushTemplateService;
-import com.regent.rpush.route.service.template.crud.IRpushTemplateReceiverCrudService;
 import com.regent.rpush.route.utils.infrastructure.persistance.Qw;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +33,7 @@ import java.util.stream.Collectors;
 public class RpushTemplateServiceImpl extends ServiceImpl<RpushTemplateMapper, RpushTemplate> implements IRpushTemplateService {
 
     @Autowired
-    private IRpushTemplateReceiverCrudService rpushTemplateReceiverService;
+    private IRpushTemplateReceiverService rpushTemplateReceiverService;
 
     @Transactional
     @Override
@@ -71,16 +71,25 @@ public class RpushTemplateServiceImpl extends ServiceImpl<RpushTemplateMapper, R
     @Override
     public Set<String> listAllReceiverId(Long rpushTemplateId) {
         RpushTemplate rpushTemplate = getById(rpushTemplateId);
-        String receiverIds = rpushTemplate.getReceiverIds();
+
+        // parsing degli ID singoli…
         Set<String> receiverEmails = new HashSet<>();
+        String receiverIds = rpushTemplate.getReceiverIds();
         if (StringUtils.isNotBlank(receiverIds)) {
             CollUtil.addAll(receiverEmails, receiverIds.split(";"));
         }
+
+        // qui chiamo il metodo facoltà listReceiversByGroup
         Long receiverGroupId = rpushTemplate.getReceiverGroupId();
-        List<RpushTemplateReceiver> receivers = rpushTemplateReceiverService.list(Qw.newInstance(RpushTemplateReceiver.class).eq("group_id", receiverGroupId));
+        List<RpushTemplateReceiver> receivers =
+                rpushTemplateReceiverService.listReceiversByGroup(receiverGroupId);
+
         if (receivers != null) {
-            receiverEmails.addAll(receivers.stream().map(RpushTemplateReceiver::getReceiverId).collect(Collectors.toList()));
+            receivers.stream()
+                    .map(RpushTemplateReceiver::getReceiverId)
+                    .forEach(receiverEmails::add);
         }
+
         return receiverEmails;
     }
 }

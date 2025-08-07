@@ -13,7 +13,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 @Service
-public class IRpushTemplateReceiverCrudServiceImpl extends ServiceImpl<RpushTemplateReceiverMapper, RpushTemplateReceiver> implements IRpushTemplateReceiverCrudService {
+public class RpushTemplateReceiverCrudServiceImpl extends ServiceImpl<RpushTemplateReceiverMapper, RpushTemplateReceiver> implements IRpushTemplateReceiverCrudService {
     @Override
     public void updateReceiver(RpushTemplateReceiver receiver) {
         String clientId = SessionUtils.getClientId();
