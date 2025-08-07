@@ -6,7 +6,7 @@ import com.regent.rpush.route.dto.ReceiverBatchInsertDTO;
 import com.regent.rpush.route.dto.wechat.CpUserImportParam;
 import com.regent.rpush.route.model.RpushTemplateReceiverGroup;
 import com.regent.rpush.route.service.template.IRpushTemplateReceiverGroupService;
-import com.regent.rpush.route.service.template.IRpushTemplateReceiverService;
+import com.regent.rpush.route.service.template.batch.IRpushTemplateReceiverBatchService;
 import com.regent.rpush.route.utils.core.RouteSingleton;
 import me.chanjar.weixin.common.error.WxErrorException;
 import me.chanjar.weixin.cp.api.impl.WxCpServiceImpl;
@@ -31,7 +31,7 @@ import java.util.List;
 public class CpController {
 
     @Autowired
-    private IRpushTemplateReceiverService rpushTemplateReceiverService;
+    private IRpushTemplateReceiverBatchService rpushTemplateReceiverService;
     @Autowired
     private IRpushTemplateReceiverGroupService rpushTemplateReceiverGroupService;
 

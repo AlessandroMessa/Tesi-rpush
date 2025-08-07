@@ -8,8 +8,8 @@ import com.regent.rpush.dto.enumration.MessagePlatformEnum;
 import com.regent.rpush.route.mapper.RpushTemplateMapper;
 import com.regent.rpush.route.model.RpushTemplate;
 import com.regent.rpush.route.model.RpushTemplateReceiver;
-import com.regent.rpush.route.service.template.IRpushTemplateReceiverService;
 import com.regent.rpush.route.service.template.IRpushTemplateService;
+import com.regent.rpush.route.service.template.crud.IRpushTemplateReceiverCrudService;
 import com.regent.rpush.route.utils.infrastructure.persistance.Qw;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +33,7 @@ import java.util.stream.Collectors;
 public class RpushTemplateServiceImpl extends ServiceImpl<RpushTemplateMapper, RpushTemplate> implements IRpushTemplateService {
 
     @Autowired
-    private IRpushTemplateReceiverService rpushTemplateReceiverService;
+    private IRpushTemplateReceiverCrudService rpushTemplateReceiverService;
 
     @Transactional
     @Override

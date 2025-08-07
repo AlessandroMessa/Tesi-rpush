@@ -7,7 +7,7 @@ import com.regent.rpush.route.mapper.RpushTemplateReceiverGroupMapper;
 import com.regent.rpush.route.model.RpushTemplateReceiver;
 import com.regent.rpush.route.model.RpushTemplateReceiverGroup;
 import com.regent.rpush.route.service.template.IRpushTemplateReceiverGroupService;
-import com.regent.rpush.route.service.template.IRpushTemplateReceiverService;
+import com.regent.rpush.route.service.template.crud.IRpushTemplateReceiverCrudService;
 import com.regent.rpush.route.utils.infrastructure.persistance.Qw;
 import com.regent.rpush.route.utils.infrastructure.session.SessionUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -32,7 +32,7 @@ import java.util.stream.Collectors;
 public class RpushTemplateReceiverGroupServiceImpl extends ServiceImpl<RpushTemplateReceiverGroupMapper, RpushTemplateReceiverGroup> implements IRpushTemplateReceiverGroupService {
 
     @Autowired
-    private IRpushTemplateReceiverService rpushTemplateReceiverService;
+    private IRpushTemplateReceiverCrudService rpushTemplateReceiverService;
 
     @Override
     public void updateGroup(RpushTemplateReceiverGroup group) {

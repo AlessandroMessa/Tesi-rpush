@@ -15,7 +15,8 @@ import com.regent.rpush.route.dto.ReceiverBatchInsertDTO;
 import com.regent.rpush.route.model.RpushTemplateReceiver;
 import com.regent.rpush.route.model.RpushTemplateReceiverGroup;
 import com.regent.rpush.route.service.template.IRpushTemplateReceiverGroupService;
-import com.regent.rpush.route.service.template.IRpushTemplateReceiverService;
+import com.regent.rpush.route.service.template.batch.IRpushTemplateReceiverBatchService;
+import com.regent.rpush.route.service.template.crud.IRpushTemplateReceiverCrudService;
 import com.regent.rpush.route.utils.infrastructure.pagination.PaginationUtil;
 import com.regent.rpush.route.utils.infrastructure.session.SessionUtils;
 import io.swagger.annotations.ApiOperation;
@@ -55,7 +56,9 @@ public class RpushTemplateReceiverController {
     private final static Logger LOGGER = LoggerFactory.getLogger(RpushTemplateReceiverController.class);
 
     @Autowired
-    private IRpushTemplateReceiverService rpushTemplateReceiverService;
+    private IRpushTemplateReceiverCrudService iRpushTemplateReceiverCrudService;
+    @Autowired
+    private IRpushTemplateReceiverBatchService iRpushTemplateReceiverBatchService;
     @Autowired
     private IRpushTemplateReceiverGroupService rpushTemplateReceiverGroupService;
 
@@ -73,7 +76,7 @@ public class RpushTemplateReceiverController {
         wrapper.eq(param.getGroupId() != null, "group_id", param.getGroupId());
         wrapper.like(StringUtils.isNotBlank(param.getReceiverId()), "receiver_id", param.getReceiverId());
         wrapper.eq(param.getId() != null, "id", param.getId());
-        page = (Page<RpushTemplateReceiver>) rpushTemplateReceiverService.page(page, wrapper);
+        page = (Page<RpushTemplateReceiver>) iRpushTemplateReceiverCrudService.page(page, wrapper);
         Pagination<RpushTemplateReceiver> pagination = PaginationUtil.convert(page);
 
         List<RpushTemplateReceiver> dataList = pagination.getDataList();
@@ -119,7 +122,7 @@ public class RpushTemplateReceiverController {
     @ApiOperation("新增或更新接收人")
     @PostMapping
     public ApiResult<String> updateReceiver(@RequestBody @Valid @NotNull(message = "参数不全") RpushTemplateReceiver receiver) {
-        rpushTemplateReceiverService.updateReceiver(receiver);
+        iRpushTemplateReceiverCrudService.updateReceiver(receiver);
         return ApiResult.success();
     }
 
@@ -129,7 +132,7 @@ public class RpushTemplateReceiverController {
         if (id == null) {
             return ApiResult.success();
         }
-        rpushTemplateReceiverService.delete(id);
+        iRpushTemplateReceiverCrudService.delete(id);
         return ApiResult.success();
     }
 
@@ -164,7 +167,7 @@ public class RpushTemplateReceiverController {
         if (file.isEmpty()) {
             return ApiResult.of("上传文件不能为空");
         }
-        EasyExcel.read(file.getInputStream(), ReceiverBatchInsertDTO.class, new ImportReceiverListener(platform, rpushTemplateReceiverService)).headRowNumber(3).sheet().doRead(); // 导入
+        EasyExcel.read(file.getInputStream(), ReceiverBatchInsertDTO.class, new ImportReceiverListener(platform, iRpushTemplateReceiverBatchService)).headRowNumber(3).sheet().doRead(); // 导入
         return ApiResult.success();
     }
 
@@ -175,12 +178,12 @@ public class RpushTemplateReceiverController {
         private static final int BATCH_COUNT = 3000;
         private final List<ReceiverBatchInsertDTO> list = new ArrayList<>();
 
-        private final IRpushTemplateReceiverService rpushTemplateReceiverService;
+        private final IRpushTemplateReceiverBatchService iRpushTemplateReceiverBatchService;
         private final MessagePlatformEnum platform;
 
-        ImportReceiverListener (MessagePlatformEnum platform, IRpushTemplateReceiverService rpushTemplateReceiverService) {
+        ImportReceiverListener (MessagePlatformEnum platform, IRpushTemplateReceiverBatchService rpushTemplateReceiverService) {
             this.platform = platform;
-            this.rpushTemplateReceiverService = rpushTemplateReceiverService;
+            this.iRpushTemplateReceiverBatchService = rpushTemplateReceiverService;
         }
 
         @Override
@@ -201,7 +204,7 @@ public class RpushTemplateReceiverController {
          * 加上存储数据库
          */
         private void saveData() {
-            rpushTemplateReceiverService.batchInsert(platform, list);
+            iRpushTemplateReceiverBatchService.batchInsert(platform, list);
         }
     }
 }
