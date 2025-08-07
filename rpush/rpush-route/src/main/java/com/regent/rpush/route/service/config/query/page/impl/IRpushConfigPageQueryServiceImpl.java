@@ -13,11 +13,11 @@ import com.regent.rpush.dto.table.Pagination;
 import com.regent.rpush.route.mapper.RpushPlatformConfigMapper;
 import com.regent.rpush.route.model.RpushPlatformConfig;
 import com.regent.rpush.route.model.RpushTemplate;
+import com.regent.rpush.route.service.config.query.api.ClientContext;
+import com.regent.rpush.route.service.config.query.api.ConfigFieldProvider;
 import com.regent.rpush.route.service.config.query.batch.IRpushConfigBatchQueryService;
 import com.regent.rpush.route.service.config.query.page.IRpushConfigPageQueryService;
 import com.regent.rpush.route.service.template.IRpushTemplateService;
-import com.regent.rpush.route.utils.application.message.MessageHandlerUtils;
-import com.regent.rpush.route.utils.infrastructure.session.SessionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,11 +31,15 @@ public class IRpushConfigPageQueryServiceImpl extends ServiceImpl<RpushPlatformC
     private IRpushTemplateService rpushTemplateService;
     @Autowired
     private IRpushConfigBatchQueryService iRpushConfigBatchQueryService;
+    @Autowired
+    private ClientContext clientContext;
+    @Autowired
+    private ConfigFieldProvider configFieldProvider;
 
     @Override
     public ConfigTableDTO pageConfig(MessagePlatformEnum platform, Long configId, String configName, Integer pageNum, Integer pageSize) {
         // 拿到表头
-        List<ConfigFieldVO> configFieldVOS = MessageHandlerUtils.listConfigFieldName(platform);
+        List<ConfigFieldVO> configFieldVOS = configFieldProvider.listFields(platform);
         ConfigTableDTO tableDTO = new ConfigTableDTO();
         tableDTO.setHeader(configFieldVOS);
 
@@ -44,7 +48,7 @@ public class IRpushConfigPageQueryServiceImpl extends ServiceImpl<RpushPlatformC
         pageSize = PageUtil.getDefaultPageSize(pageSize);
         Page<RpushPlatformConfig> page = new Page<>(pageNum, pageSize);
         QueryWrapper<RpushPlatformConfig> wrapper = new QueryWrapper<>();
-        wrapper.eq("client_id", SessionUtils.getClientId());
+        wrapper.eq("client_id", clientContext.getClientId());
         wrapper.eq("platform", platform.name());
         wrapper.like(StringUtils.isNotBlank(configName), "config_name", configName);
         wrapper.eq(configId != null, "id", configId);
@@ -53,7 +57,7 @@ public class IRpushConfigPageQueryServiceImpl extends ServiceImpl<RpushPlatformC
         List<Long> configIds = configs.stream().map(RpushPlatformConfig::getId).collect(Collectors.toList());
 
         // 查具体的配置值
-        Map<Long, Map<String, Object>> queryConfig =iRpushConfigBatchQueryService.queryConfig(SessionUtils.getClientId(), configIds);
+        Map<Long, Map<String, Object>> queryConfig =iRpushConfigBatchQueryService.queryConfig(clientContext.getClientId(), configIds);
         Collection<Map<String, Object>> dataList = queryConfig.values();
         for (Map.Entry<Long, Map<String, Object>> entry : queryConfig.entrySet()) {
             entry.getValue().put("configId", entry.getKey());
