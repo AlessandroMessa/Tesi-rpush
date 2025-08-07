@@ -6,21 +6,17 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.regent.rpush.dto.enumration.MessagePlatformEnum;
 import com.regent.rpush.route.mapper.RpushTemplateReceiverMapper;
 import com.regent.rpush.route.model.RpushTemplateReceiver;
-import com.regent.rpush.route.api.query.ClientContext;
 import com.regent.rpush.route.service.template.crud.IRpushTemplateReceiverCrudService;
 import com.regent.rpush.route.utils.infrastructure.persistance.Qw;
+import com.regent.rpush.route.utils.infrastructure.session.SessionUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class IRpushTemplateReceiverCrudServiceImpl extends ServiceImpl<RpushTemplateReceiverMapper, RpushTemplateReceiver> implements IRpushTemplateReceiverCrudService {
-    @Autowired
-    private ClientContext clientContext;
-
     @Override
     public void updateReceiver(RpushTemplateReceiver receiver) {
-        String clientId = clientContext.getClientId();
+        String clientId = SessionUtils.getClientId();
         String receiverId = receiver.getReceiverId();
         Long id = receiver.getId();
         MessagePlatformEnum platform = MessagePlatformEnum.valueOf(receiver.getPlatform());
@@ -48,6 +44,6 @@ public class IRpushTemplateReceiverCrudServiceImpl extends ServiceImpl<RpushTemp
     }
     @Override
     public void delete(Long id) {
-        remove(Qw.newInstance(RpushTemplateReceiver.class).eq("id", id).eq("client_id", clientContext.getClientId()));
+        remove(Qw.newInstance(RpushTemplateReceiver.class).eq("id", id).eq("client_id", SessionUtils.getClientId()));
     }
 }

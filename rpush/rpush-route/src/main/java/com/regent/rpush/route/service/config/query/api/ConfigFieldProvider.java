@@ -1,4 +1,4 @@
-package com.regent.rpush.route.api.query;
+package com.regent.rpush.route.service.config.query.api;
 
 import com.regent.rpush.dto.enumration.MessagePlatformEnum;
 import com.regent.rpush.dto.route.config.query.field.ConfigFieldVO;
