@@ -7,8 +7,8 @@ import com.regent.rpush.dto.enumration.MessageType;
 import com.regent.rpush.dto.message.base.BaseMessage;
 import com.regent.rpush.dto.message.base.MessagePushDTO;
 import com.regent.rpush.dto.message.base.TypeMessageDTO;
+import com.regent.rpush.route.service.config.query.default_.IRpushConfigDefaultQueryService;
 import com.regent.rpush.route.service.message.history.IRpushMessageHisService;
-import com.regent.rpush.route.service.config.query.IRpushConfigQueryService;
 import com.regent.rpush.route.spi.IMessageHandlerDescriptor;
 import com.regent.rpush.route.utils.application.message.MessageHandlerUtils;
 import org.slf4j.Logger;
@@ -28,7 +28,7 @@ public abstract class MessageHandler<T extends BaseMessage> implements EventHand
     private final static Logger LOGGER = LoggerFactory.getLogger(MessageHandler.class);
 
     @Autowired
-    protected IRpushConfigQueryService iRpushConfigQueryService;
+    protected IRpushConfigDefaultQueryService iRpushConfigQueryService;
     @Autowired
     protected IRpushMessageHisService rpushMessageHisService;
 

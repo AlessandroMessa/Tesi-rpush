@@ -1,23 +1,13 @@
-package com.regent.rpush.route.service.config.query;
+package com.regent.rpush.route.service.config.query.default_;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.regent.rpush.dto.enumration.MessagePlatformEnum;
 import com.regent.rpush.dto.message.base.BaseMessage;
-import com.regent.rpush.dto.route.config.query.table.ConfigTableDTO;
 import com.regent.rpush.route.model.RpushPlatformConfig;
 
 import java.util.List;
-import java.util.Map;
 
-public interface IRpushConfigQueryService extends IService<RpushPlatformConfig> {
-    /**
-     * 批量查询配置
-     *
-     * @param configIds 配置id列表，传空会返回空map
-     * @return 键为配置id，值为：具体的配置键值
-     */
-    Map<Long, Map<String, Object>> queryConfig(String clientId, List<Long> configIds);
-
+public interface IRpushConfigDefaultQueryService {
     /**
      * 批量查询配置，如果没有传配置id列表，会查一下默认配置，如果没有默认配置，则会返回空数组
      *
@@ -28,11 +18,4 @@ public interface IRpushConfigQueryService extends IService<RpushPlatformConfig> 
     <T> List<T> queryConfigOrDefault(String clientId, List<Long> configIds, Class<T> configType, MessagePlatformEnum platform);
 
     <T> List<T> queryConfigOrDefault(BaseMessage message, Class<T> configType, MessagePlatformEnum platform);
-
-    /**
-     * 查询配置分页数据
-     *
-     * @param platform 平台
-     */
-    ConfigTableDTO pageConfig(MessagePlatformEnum platform, Long configId, String configName, Integer pageNum, Integer pageSize);
 }

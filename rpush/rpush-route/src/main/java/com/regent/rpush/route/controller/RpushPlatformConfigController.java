@@ -12,9 +12,9 @@ import com.regent.rpush.dto.route.config.query.table.ConfigTableDTO;
 import com.regent.rpush.dto.route.config.command.UpdateConfigDTO;
 import com.regent.rpush.dto.table.Pagination;
 import com.regent.rpush.route.model.RpushTemplate;
+import com.regent.rpush.route.service.config.query.page.IRpushConfigPageQueryService;
 import com.regent.rpush.route.service.template.IRpushTemplateService;
 import com.regent.rpush.route.service.config.command.IRpushConfigCommandService;
-import com.regent.rpush.route.service.config.query.IRpushConfigQueryService;
 import com.regent.rpush.route.utils.application.message.MessageHandlerUtils;
 import com.regent.rpush.route.utils.infrastructure.persistance.Qw;
 import io.swagger.annotations.ApiOperation;
@@ -44,7 +44,7 @@ public class RpushPlatformConfigController {
     @Autowired
     private IRpushConfigCommandService iRpushConfigCommandService;
     @Autowired
-    private IRpushConfigQueryService iRpushConfigQueryService;
+    private IRpushConfigPageQueryService iRpushConfigPageQueryService;
     @Autowired
     private IRpushTemplateService rpushTemplateService;
 
@@ -93,7 +93,7 @@ public class RpushPlatformConfigController {
                                                 String configName,
                                                 Integer pageNum,
                                                 Integer pageSize) {
-        ConfigTableDTO table = iRpushConfigQueryService.pageConfig(platform, null, configName, pageNum, pageSize);
+        ConfigTableDTO table = iRpushConfigPageQueryService.pageConfig(platform, null, configName, pageNum, pageSize);
         return ApiResult.of(table);
     }
 
@@ -104,7 +104,7 @@ public class RpushPlatformConfigController {
         if (configId == null || platform == null) {
             return ApiResult.of(null);
         }
-        ConfigTableDTO configTableDTO = iRpushConfigQueryService.pageConfig(platform, configId, null, null, null);
+        ConfigTableDTO configTableDTO = iRpushConfigPageQueryService.pageConfig(platform, configId, null, null, null);
         if (configTableDTO == null) {
             return ApiResult.of(null);
         }
