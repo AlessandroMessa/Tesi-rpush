@@ -2,7 +2,6 @@ package com.regent.rpush.route.service.template.batch.impl;
 
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.lang.UUID;
-import com.regent.rpush.dto.enumration.MessagePlatformEnum;
 import com.regent.rpush.route.api.batch.ReceiverBatchRequest;
 import com.regent.rpush.route.dto.ReceiverBatchInsertDTO;
 import com.regent.rpush.route.mapper.RpushTemplateReceiverMapper;
