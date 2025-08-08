@@ -23,4 +23,5 @@ public interface SocketSession {
 
     void removeAttribute(String name);
 
+    void setRegistrationId(Long registrationId);
 }

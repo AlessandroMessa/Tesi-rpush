@@ -5,7 +5,7 @@ import com.regent.rpush.common.protocol.MessageProto;
 import com.regent.rpush.common.protocol.PingPong;
 import com.regent.rpush.server.socket.RpushClient;
 import com.regent.rpush.server.socket.session.SocketSession;
-import com.regent.rpush.server.socket.session.SocketSessionHolder;
+import com.regent.rpush.server.socket.session.service.SocketSessionService;
 import com.regent.rpush.server.utils.SpringConfig;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandler;
@@ -15,6 +15,7 @@ import io.netty.handler.timeout.IdleState;
 import io.netty.handler.timeout.IdleStateEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @author 钟宝林
@@ -24,14 +25,15 @@ import org.slf4j.LoggerFactory;
 public class RpushServerHandler extends SimpleChannelInboundHandler<MessageProto.MessageProtocol> {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(RpushServerHandler.class);
-
+    @Autowired
+    private SocketSessionService socketSessionService;
     /**
      * 客户端通道关闭，清除相关数据
      */
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         // 清除相关数据
-        SocketSessionHolder.offLine(NioSocketChannelClient.getInstance(ctx.channel()));
+        socketSessionService.offlineByClient(NioSocketChannelClient.getInstance(ctx.channel()));
         super.channelInactive(ctx);
     }
 
@@ -43,7 +45,7 @@ public class RpushServerHandler extends SimpleChannelInboundHandler<MessageProto
                 LOGGER.info("定时检测客户端是否存活");
 
                 long heartBeatTime = SpringConfig.getHeartbeatTime() * 1000;
-                SocketSession socketSession = SocketSessionHolder.get(NioSocketChannelClient.getInstance(ctx.channel()));
+                SocketSession socketSession = socketSessionService.getOrCreate(NioSocketChannelClient.getInstance(ctx.channel()));
                 Long lastPingTime = (Long) socketSession.getAttribute(SocketSessionKey.LAST_PING_TIME);
                 long now = System.currentTimeMillis();
                 if (lastPingTime != null && now - lastPingTime > heartBeatTime) {
@@ -51,7 +53,7 @@ public class RpushServerHandler extends SimpleChannelInboundHandler<MessageProto
                     if (registrationId != null) {
                         LOGGER.warn("客户端[{}]心跳超时[{}]ms，需要关闭连接!", registrationId, now - lastPingTime);
                     }
-                    SocketSessionHolder.offLine((RpushClient) ctx.channel());
+                    socketSessionService.offlineByClient((RpushClient) ctx.channel());
                 }
             }
         }
@@ -63,13 +65,13 @@ public class RpushServerHandler extends SimpleChannelInboundHandler<MessageProto
     protected void channelRead0(ChannelHandlerContext ctx, MessageProto.MessageProtocol msg) throws Exception {
         if (msg.getType() == Constants.MessageType.LOGIN) {
             // 收到客户端登录请求
-            SocketSessionHolder.login(msg.getFromTo(), NioSocketChannelClient.getInstance(ctx.channel()));
+            socketSessionService.login(msg.getFromTo(), NioSocketChannelClient.getInstance(ctx.channel()));
             LOGGER.info("client [{}] online success!!", msg.getFromTo());
         }
 
         // 收到客户端心跳，更新对应客户端最新心跳时间
         if (msg.getType() == Constants.MessageType.PING) {
-            SocketSession socketSession = SocketSessionHolder.get(NioSocketChannelClient.getInstance(ctx.channel()));
+            SocketSession socketSession = socketSessionService.getOrCreate(NioSocketChannelClient.getInstance(ctx.channel()));
             socketSession.setAttribute(SocketSessionKey.LAST_PING_TIME, System.currentTimeMillis());
             // 向客户端响应 pong 消息
             ctx.writeAndFlush(PingPong.pong()).addListeners((ChannelFutureListener) future -> {

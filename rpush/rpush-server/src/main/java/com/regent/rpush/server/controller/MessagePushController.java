@@ -6,8 +6,9 @@ import com.regent.rpush.dto.StatusCode;
 import com.regent.rpush.dto.message.NormalMessageDTO;
 import com.regent.rpush.server.socket.RpushClient;
 import com.regent.rpush.server.socket.session.SocketSession;
-import com.regent.rpush.server.socket.session.SocketSessionHolder;
+import com.regent.rpush.server.socket.session.service.SocketSessionService;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
@@ -15,9 +16,12 @@ import javax.validation.Valid;
 @RestController
 public class MessagePushController implements MessagePushService {
 
+    @Autowired
+    private SocketSessionService socketSessionService;
+
     @ApiOperation(value = "发消息")
     public ApiResult<String> push(@Valid NormalMessageDTO message) {
-        SocketSession socketSession = SocketSessionHolder.getSocketSession(message.getSendTo());
+        SocketSession socketSession = socketSessionService.getSessionByRegistrationId(message.getSendTo());
         if (socketSession == null) {
             return ApiResult.of(StatusCode.FAILURE, "该设备未上线" + message.getSendTo());
         }

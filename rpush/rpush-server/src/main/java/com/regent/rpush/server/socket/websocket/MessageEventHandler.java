@@ -7,14 +7,17 @@ import com.corundumstudio.socketio.annotation.OnDisconnect;
 import com.corundumstudio.socketio.annotation.OnEvent;
 import com.regent.rpush.dto.message.NormalMessageDTO;
 import com.regent.rpush.server.socket.RpushClient;
-import com.regent.rpush.server.socket.session.SocketSessionHolder;
+import com.regent.rpush.server.socket.session.service.SocketSessionService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
 public class MessageEventHandler {
+    @Autowired
+    private SocketSessionService socketSessionService;
 
     /**
      * 客户端连接的时候触发
@@ -29,7 +32,7 @@ public class MessageEventHandler {
             return;
         }
         long registrationId = Long.parseLong(registrationIdStr);
-        SocketSessionHolder.login(registrationId, client);
+        socketSessionService.login(registrationId, client);
 
         // 回发连接成功消息
         client.pushMessage(NormalMessageDTO.builder().content("连接成功").build());
@@ -41,7 +44,7 @@ public class MessageEventHandler {
      */
     @OnDisconnect
     public void onDisconnect(SocketIOClient client) {
-        long registrationId = SocketSessionHolder.offLine(WebSocketClient.getInstance(client));
+        long registrationId = socketSessionService.offlineByClient(WebSocketClient.getInstance(client));
         if (registrationId > 0) {
             log.info("客户端:" + registrationId + "断开连接");
         }

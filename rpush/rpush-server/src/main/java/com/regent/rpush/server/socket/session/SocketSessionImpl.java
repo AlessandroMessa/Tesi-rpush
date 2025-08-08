@@ -25,7 +25,7 @@ public class SocketSessionImpl implements SocketSession {
     public Long getRegistrationId() {
         return registrationId;
     }
-
+    @Override
     public void setRegistrationId(Long registrationId) {
         this.registrationId = registrationId;
     }
